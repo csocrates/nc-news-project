@@ -15,6 +15,7 @@ function App() {
       <Sidebar />
       <Router className="article-list">
         <ArticleList path="/" />
+        <ArticleList path="/:topic/articles" />
       </Router>
     </div>
   );

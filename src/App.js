@@ -4,18 +4,20 @@ import Nav from "./components/Nav";
 import Sidebar from "./components/Sidebar";
 import { Router } from "@reach/router";
 import ArticleList from "./components/ArticleList";
-import SortBy from "./components/SortBy";
+import ErrorDisplayer from "./components/ErrorDisplayer";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   return (
     <div className="App">
       <Title />
       <Nav />
-      <SortBy />
       <Sidebar />
-      <Router className="article-list">
+      <Router className="articles-list">
         <ArticleList path="/" />
         <ArticleList path="/:topic/articles" />
+        <SingleArticle path="/articles/:article_id" />
+        <ErrorDisplayer default />
       </Router>
     </div>
   );

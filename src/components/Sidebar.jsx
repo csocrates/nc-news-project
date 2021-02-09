@@ -13,20 +13,12 @@ class Sidebar extends Component {
     const { topics } = this.state;
     return (
       <div className="topics-sidebar">
-        <h2>Topics</h2>
-        <form>
-          <label>
-            <input type="text" placeholder="Create Topic"></input>
-            <button type="submit">Post</button>
-          </label>
-        </form>
-        <h3>Trending Topics</h3>
+        <h2>Browse Articles by Topic:</h2>
+
         {topics.map((topic) => {
           return (
-            <li>
-              <Link to={`${topic.slug}/articles`} key={topic.slug}>
-                {topic.slug}
-              </Link>
+            <li key={topic.slug}>
+              <Link to={`${topic.slug}/articles`}>{topic.slug}</Link>
             </li>
           );
         })}

@@ -36,10 +36,10 @@ class SingleArticle extends Component {
       .catch(
         ({
           response: {
-            data: { err },
+            data: { msg },
           },
         }) => {
-          this.setState({ errorMessage: err, isLoading: false });
+          this.setState({ errorMessage: msg, isLoading: false });
         }
       );
   }

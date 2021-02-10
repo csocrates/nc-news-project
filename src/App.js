@@ -6,6 +6,7 @@ import { Router } from "@reach/router";
 import ArticleList from "./components/ArticleList";
 import ErrorDisplayer from "./components/ErrorDisplayer";
 import SingleArticle from "./components/SingleArticle";
+import UserPage from "./components/UserPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <ArticleList path="/" />
         <ArticleList path="/:topic/articles" />
         <SingleArticle path="/articles/:article_id" />
+        <UserPage path="/users/:username" />
         <ErrorDisplayer default />
       </Router>
     </div>

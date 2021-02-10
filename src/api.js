@@ -30,3 +30,9 @@ export const getComments = (article_id) => {
     return data.comments;
   });
 };
+
+export const getUser = (username) => {
+  return request.get(`/users/${username}`).then(({ data }) => {
+    return data.user;
+  });
+};

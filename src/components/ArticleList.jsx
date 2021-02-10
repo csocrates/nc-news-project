@@ -34,9 +34,7 @@ class ArticleList extends Component {
         </h3>
       );
 
-    return isLoading ? (
-      <Loader />
-    ) : (
+    return (
       <section className="article-list">
         <ArticlesHeader topic={topic} />
         {articles.map((article) => {
@@ -58,10 +56,10 @@ class ArticleList extends Component {
       .catch(
         ({
           response: {
-            data: { err },
+            data: { msg },
           },
         }) => {
-          this.setState({ isLoading: false, errorMessage: err });
+          this.setState({ isLoading: false, errorMessage: msg });
         }
       );
   }

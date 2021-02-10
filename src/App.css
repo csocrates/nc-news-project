@@ -30,6 +30,8 @@
   font-family: "Yellowtail", cursive;
   font-size: 40px;
   grid-area: main-title;
+  display: flex;
+  justify-content: left;
 }
 
 .dropdown-menu {

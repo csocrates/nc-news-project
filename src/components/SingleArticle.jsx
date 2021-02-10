@@ -3,6 +3,7 @@ import * as api from "../api";
 import ErrorDisplayer from "./ErrorDisplayer";
 import Loader from "./Loader";
 import CommentList from "./CommentList";
+import VoteUpdater from "./VoteUpdater";
 
 class SingleArticle extends Component {
   state = { article: {}, isLoading: true, errorMessage: "" };
@@ -23,6 +24,7 @@ class SingleArticle extends Component {
         <h3>{title}</h3>
         <p>-{author}</p>
         <p>{body}</p>
+        <VoteUpdater id={article_id} votes={votes} type="articles" />
         <CommentList article_id={article_id} />
       </section>
     );

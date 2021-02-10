@@ -7,6 +7,7 @@ import ArticleList from "./components/ArticleList";
 import ErrorDisplayer from "./components/ErrorDisplayer";
 import SingleArticle from "./components/SingleArticle";
 import UserPage from "./components/UserPage";
+import ArticlePoster from "./components/ArticlePoster";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <ArticleList path="/:topic/articles" />
         <SingleArticle path="/articles/:article_id" />
         <UserPage path="/users/:username" />
+        <ArticlePoster path="/articles/post" />
         <ErrorDisplayer default />
       </Router>
     </div>

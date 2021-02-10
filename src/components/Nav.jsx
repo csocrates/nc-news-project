@@ -8,7 +8,7 @@ class Nav extends Component {
         <button className="dropbtn">Home</button>
         <div className="dropdown-content">
           <Link to="/">Home</Link>
-          <Link to="">Post an Article</Link>
+          <Link to="/articles/post">Post an Article</Link>
           <Link to="">Post a Topic</Link>
           <Link to="">Something else</Link>
         </div>

@@ -41,19 +41,6 @@ export const patchVotes = (id, vote_inc, type) => {
   return request.patch(`${type}/${id}`, { inc_votes: vote_inc });
 };
 
-// "PATCH /api/articles/:article_id": {
-//   "description": "adds votes to article by article_id",
-//   "exampleRequest": {
-//     "inc_votes": "1"
-//   },
-//   "exampleResponse": {
-//     "article": {
-//       "article_id": "56",
-//       "title": "A new breed!?",
-//       "body": "Text in the article...",
-//       "votes": "1",
-//       "topic": "cats",
-//       "author": "_existing user_",
-//       "created_at": "2021-08-18T12:07:52.389Z",
-//       "comment_count": "0"
-//     }
+export const postArticle = (newArticle) => {
+  return request.post("/articles", newArticle);
+};

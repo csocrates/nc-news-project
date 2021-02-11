@@ -44,3 +44,7 @@ export const patchVotes = (id, vote_inc, type) => {
 export const postArticle = (newArticle) => {
   return request.post("/articles", newArticle);
 };
+
+export const postTopic = (newTopic) => {
+  return request.post("/topics", newTopic);
+};

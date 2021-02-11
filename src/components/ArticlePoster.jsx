@@ -25,6 +25,10 @@ class ArticlePoster extends Component {
     this.fetchTopics();
   }
 
+  componentDidUpdate() {
+    this.fetchTopics();
+  }
+
   handleInput = ({ target: { id, value } }) => {
     this.setState({ [id]: value });
   };
@@ -95,12 +99,13 @@ class ArticlePoster extends Component {
           msg={successMessage}
           item={postedArticle}
           type="article"
+          reset={this.resetPostArticlePage}
         />
       );
 
     return (
       <form className="article-poster">
-        <h2>Your chance to be read by the millions...</h2>
+        <h2>"And my word was read, and changed lives for the better..."</h2>
         <label>
           Title:
           <input
@@ -149,6 +154,9 @@ class ArticlePoster extends Component {
       this.setState({ topics, isLoading: false });
     });
   }
+  resetPostArticlePage = () => {
+    this.setState({ successMessage: "" });
+  };
 }
 
 export default ArticlePoster;

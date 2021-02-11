@@ -4,6 +4,7 @@ import ArticlesHeader from "./ArticlesHeader";
 import Loader from "./Loader";
 import * as api from "../api";
 import ErrorDisplayer from "./ErrorDisplayer";
+import { Link } from "@reach/router";
 
 class ArticleList extends Component {
   state = { topic: "", articles: [], isLoading: true, errorMessage: "" };
@@ -27,11 +28,14 @@ class ArticleList extends Component {
     if (errorMessage) return <ErrorDisplayer err={errorMessage} />;
     if (articles.length === 0)
       return (
-        <h3>
-          {" "}
-          Uh oh, nobody's posted any articles for this topic - better get
-          writing!
-        </h3>
+        <>
+          <h3>
+            {" "}
+            Uh oh, nobody's posted any articles for this topic - better get
+            writing!
+          </h3>
+          <Link to="/articles/post">Post an article</Link>
+        </>
       );
 
     return (

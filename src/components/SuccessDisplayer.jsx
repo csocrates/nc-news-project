@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-const SuccessDisplayer = ({ msg, item, type }) => {
+const SuccessDisplayer = ({ msg, item, type, reset }) => {
   if (type === "article") {
     return (
       <>
@@ -11,8 +11,16 @@ const SuccessDisplayer = ({ msg, item, type }) => {
           <br />
           <br />
           Think you've got another in you?{" "}
-          <Link to="/articles/post">Post another article</Link>
+          <button onClick={reset}>Post another article</button>
         </p>
+      </>
+    );
+  }
+  if (type === "topic") {
+    return (
+      <>
+        <p>{msg}</p>
+        <p>Congratulations, now time to get writing some content!</p>
       </>
     );
   }

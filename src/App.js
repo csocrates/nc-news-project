@@ -8,6 +8,7 @@ import ErrorDisplayer from "./components/ErrorDisplayer";
 import SingleArticle from "./components/SingleArticle";
 import UserPage from "./components/UserPage";
 import ArticlePoster from "./components/ArticlePoster";
+import SuccessDisplayer from "./components/SuccessDisplayer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <SingleArticle path="/articles/:article_id" />
         <UserPage path="/users/:username" />
         <ArticlePoster path="/articles/post" />
+        <SuccessDisplayer path="/articles/post/success" />
         <ErrorDisplayer default />
       </Router>
     </div>

@@ -6,7 +6,7 @@ const CommentCard = ({ username, votes, created_at, body }) => {
     <section className="comment-card">
       <p>{body}</p>
       <p>
-        posted by {username} on {formattedTime} ☝️ {votes}
+        posted by {username} on {formattedTime}
       </p>
     </section>
   );

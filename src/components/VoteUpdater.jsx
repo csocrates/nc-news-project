@@ -22,23 +22,23 @@ class VoteUpdater extends Component {
     const { votes } = this.props;
     const { voteChange } = this.state;
     return (
-      <section>
+      <section className="voter">
         <button
           disabled={voteChange === 1}
           onClick={() => {
             this.handleClick(1);
           }}
         >
-          Upvote
+          👏🏾
         </button>
-        <p>{votes + voteChange}</p>
+        <p>Votes: {votes + voteChange}</p>
         <button
           disabled={voteChange === -1}
           onClick={() => {
             this.handleClick(-1);
           }}
         >
-          Downvote
+          👎🏾
         </button>
       </section>
     );

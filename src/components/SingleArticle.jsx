@@ -22,7 +22,7 @@ class SingleArticle extends Component {
     return (
       <section className="single-article">
         <h3>{title}</h3>
-        <p>-{author}</p>
+        <p>by {author}</p>
         <p>{body}</p>
         <VoteUpdater id={article_id} votes={votes} type="articles" />
         <CommentList article_id={article_id} />

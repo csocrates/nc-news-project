@@ -7,6 +7,7 @@ const ArticleCard = ({
   created_at,
   article_id,
   body,
+  topic,
 }) => {
   const preview = body.slice(0, 75);
   const formattedTime = created_at.split("T")[0];
@@ -17,8 +18,9 @@ const ArticleCard = ({
         style={{ color: "black", textDecoration: "none" }}
       >
         <h5>{title}</h5>
-        <h6>{preview}...</h6>
       </Link>
+      <p style={{ fontSize: "10px" }}>u/ in {topic}</p>
+      <h6>{preview}...</h6>
       <h6>
         Posted by
         <Link to={`/users/${author}`}> {author}</Link> on {formattedTime}
@@ -26,8 +28,6 @@ const ArticleCard = ({
       <Link to={`/articles/${article_id}/`}>
         <h6>Comments({comment_count})</h6>
       </Link>
-
-      <p></p>
     </div>
   );
 };

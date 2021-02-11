@@ -12,16 +12,20 @@ export const getTopics = () => {
 };
 
 export const getArticles = (topic) => {
-  return request
-    .get("/articles", { params: { topic: topic } })
-    .then(({ data }) => {
-      return data.articles;
-    });
+  return request.get("/articles", { params: { topic } }).then(({ data }) => {
+    return data.articles;
+  });
 };
 
 export const getArticleById = (article_id) => {
   return request.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
+  });
+};
+
+export const getArticlesbyAuthor = (username) => {
+  return request.get(`/articles?author=${username}`).then(({ data }) => {
+    return data.articles;
   });
 };
 
@@ -47,4 +51,8 @@ export const postArticle = (newArticle) => {
 
 export const postTopic = (newTopic) => {
   return request.post("/topics", newTopic);
+};
+
+export const postComment = (article_id, newComment) => {
+  return request.post(`/articles/${article_id}/comments`, newComment);
 };

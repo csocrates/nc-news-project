@@ -20,6 +20,10 @@
   grid-template-areas: "pic main-title";
 }
 
+.p {
+  line-height: 10px;
+}
+
 .logo {
   grid-area: pic;
   width: 70px;
@@ -42,6 +46,9 @@
 .topics-sidebar {
   border: 3px solid purple;
   grid-area: topics-sidebar;
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
 }
 .articles-list {
   overflow: scroll;

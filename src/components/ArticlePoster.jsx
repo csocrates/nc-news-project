@@ -8,7 +8,6 @@ const defaultState = {
   title: "",
   body: "",
   topic: "coding",
-  author: "jessjelly",
   topics: [],
   errorMessage: "",
   successMessage: "",
@@ -16,6 +15,7 @@ const defaultState = {
   postedArticle: {},
   titleError: "",
   bodyError: "",
+  userError: "",
 };
 
 class ArticlePoster extends Component {
@@ -34,9 +34,11 @@ class ArticlePoster extends Component {
   };
 
   validate = () => {
+    const { username } = this.props;
     const { title, body } = this.state;
     let titleError = "";
     let bodyError = "";
+    let userError = "";
     if (title.length < 3) {
       titleError =
         "No title this short can accurately describe anything worth reading.";
@@ -47,10 +49,17 @@ class ArticlePoster extends Component {
     }
     if (body.length < 30) {
       bodyError =
-        "Short and sweet is good and all, but this is giving me tooth decay. (min 30 characters)";
+        "Short and sweet is good and all, but this is giving me a toothache. (min 30 characters)";
     }
     if (bodyError) {
       this.setState({ bodyError });
+      return false;
+    }
+    if (username === "") {
+      userError = "Nice try. You must be logged in to post an article.";
+    }
+    if (userError) {
+      this.setState({ userError });
       return false;
     }
     return true;
@@ -58,9 +67,11 @@ class ArticlePoster extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body, topic, author } = this.state;
-    const newArticle = { title, body, topic, author };
+    const { username } = this.props;
+    const { title, body, topic } = this.state;
+    const newArticle = { title, body, topic, author: username };
     const isValid = this.validate();
+
     if (isValid) {
       api
         .postArticle(newArticle)
@@ -71,9 +82,12 @@ class ArticlePoster extends Component {
             isLoading: false,
           });
         })
-        .catch(({ data: { msg } }) => {
-          this.setState({ errorMessage: msg, isLoading: false });
+        .catch((err) => {
+          console.dir(err);
         });
+      // .catch(({ data: { msg } }) => {
+      //   this.setState({ errorMessage: msg, isLoading: false });
+      // });
       this.setState(defaultState);
     }
   };
@@ -90,6 +104,7 @@ class ArticlePoster extends Component {
       postedArticle,
       titleError,
       bodyError,
+      userError,
     } = this.state;
     if (isLoading) return <Loader />;
     if (errorMessage) return <ErrorDisplayer err={errorMessage} />;
@@ -146,6 +161,7 @@ class ArticlePoster extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           Post!
         </button>
+        <p style={{ color: "#800000" }}>{userError}</p>
       </form>
     );
   }

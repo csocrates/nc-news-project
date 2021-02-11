@@ -14,7 +14,7 @@ import * as api from "./api";
 import React, { Component } from "react";
 
 class App extends Component {
-  state = { topics: [] };
+  state = { topics: [], username: "weegembump" };
   componentDidMount() {
     this.fetchTopics();
   }
@@ -22,18 +22,18 @@ class App extends Component {
     this.fetchTopics();
   }
   render() {
-    const { topics } = this.state;
+    const { topics, username } = this.state;
     return (
       <div className="App">
-        <Title />
+        <Title username={username} />
         <Nav />
         <Sidebar topics={topics} />
         <Router className="articles-list">
           <ArticleList path="/" />
           <ArticleList path="/:topic/articles" />
-          <SingleArticle path="/articles/:article_id" />
+          <SingleArticle path="/articles/:article_id" username={username} />
           <UserPage path="/users/:username" />
-          <ArticlePoster path="/articles/post" />
+          <ArticlePoster path="/articles/post" username={username} />
           <TopicPoster path="topics/post" addTopic={this.addTopic} />
           <ErrorDisplayer default />
         </Router>
@@ -47,7 +47,7 @@ class App extends Component {
   }
   addTopic = (postedTopic) => {
     this.setState((currentState) => {
-      return { postedTopic };
+      return { topic: [...currentState.topics, postedTopic] };
     });
   };
 }

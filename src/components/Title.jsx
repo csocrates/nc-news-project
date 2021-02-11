@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../img/logo.png";
 
-const Title = () => {
+const Title = ({ username }) => {
   return (
     <header className="title">
       <img src={logo} alt="logo" className="logo"></img>

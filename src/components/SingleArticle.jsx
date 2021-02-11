@@ -12,6 +12,7 @@ class SingleArticle extends Component {
     this.fetchArticleById(this.props.article_id);
   }
   render() {
+    const { username } = this.props;
     const {
       article: { title, author, body, votes, comment_count, article_id },
       isLoading,
@@ -25,7 +26,12 @@ class SingleArticle extends Component {
         <p>by {author}</p>
         <p>{body}</p>
         <VoteUpdater id={article_id} votes={votes} type="articles" />
-        <CommentList article_id={article_id} />
+
+        <CommentList
+          article_id={article_id}
+          comment_count={comment_count}
+          username={username}
+        />
       </section>
     );
   }

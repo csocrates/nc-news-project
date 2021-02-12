@@ -17,7 +17,7 @@ const ArticleCard = ({
         to={`/articles/${article_id}`}
         style={{ color: "black", textDecoration: "none" }}
       >
-        <h5>{title}</h5>
+        <h5 className="article-title">{title}</h5>
       </Link>
       <p style={{ fontSize: "10px" }}>u/ in {topic}</p>
       <h6>{preview}...</h6>

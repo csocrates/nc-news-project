@@ -73,6 +73,10 @@
   border: 3px solid black;
 }
 
+.article-title {
+  line-height: 5px;
+}
+
 .dropbtn {
   text-align: center;
   background-color: white;

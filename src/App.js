@@ -14,7 +14,7 @@ import * as api from "./api";
 import React, { Component } from "react";
 
 class App extends Component {
-  state = { topics: [], username: "weegembump" };
+  state = { topics: [], username: "jessjelly" };
   componentDidMount() {
     this.fetchTopics();
   }

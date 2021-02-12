@@ -24,6 +24,9 @@ const SuccessDisplayer = ({ msg, item, type, reset }) => {
       </>
     );
   }
+  if (type === "deleteArticle") {
+    return <p>{msg}</p>;
+  }
 };
 
 export default SuccessDisplayer;

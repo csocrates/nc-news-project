@@ -15,7 +15,6 @@ class SingleArticle extends Component {
 
   componentDidUpdate(prevProps) {
     const { article_id } = this.props;
-    console.log(prevProps.article_id, article_id);
     if (article_id !== prevProps.article_id) {
       this.fetchArticleById(article_id);
     }
@@ -56,15 +55,12 @@ class SingleArticle extends Component {
       .then((article) => {
         this.setState({ article, isLoading: false });
       })
-      .catch(
-        ({
-          response: {
-            data: { msg },
-          },
-        }) => {
-          this.setState({ errorMessage: msg, isLoading: false });
-        }
-      );
+      .catch((err) => {
+        this.setState({
+          errorMessage: err.response.data.msg,
+          isLoading: false,
+        });
+      });
   }
 }
 

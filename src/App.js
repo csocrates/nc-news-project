@@ -44,7 +44,6 @@ class App extends Component {
     });
   }
   addTopic = (postedTopic) => {
-    console.log("posted topic", postedTopic);
     this.setState((currentState) => {
       return { topics: [...currentState.topics, postedTopic] };
     });

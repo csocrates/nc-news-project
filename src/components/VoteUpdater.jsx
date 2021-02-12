@@ -10,7 +10,7 @@ class VoteUpdater extends Component {
       return { voteChange: currentState.voteChange + vote_inc };
     });
     api.patchVotes(id, vote_inc, type).catch((err) => {
-      console.log(err);
+      console.dir(err);
       //undoes changes made to state if unable to change vote
       this.setState((currentState) => {
         return { voteChange: currentState.voteChange - vote_inc };

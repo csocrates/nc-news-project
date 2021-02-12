@@ -51,10 +51,13 @@ class CommentPoster extends Component {
     const { body, commentError } = this.state;
     return (
       <form className="comment-poster">
+        <br />
         <label>
           Add a comment:
+          <br />
           <textarea id="body" value={body} onChange={this.handleInput} />
         </label>
+        <br />
         <button type="submit" onClick={this.handleSubmit}>
           Post!
         </button>

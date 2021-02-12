@@ -16,7 +16,6 @@ class SingleArticle extends Component {
 
   componentDidUpdate(prevProps) {
     const { article_id } = this.props;
-    console.log("in the if state");
     if (article_id !== prevProps.article_id) {
       this.fetchArticleById(article_id);
     }

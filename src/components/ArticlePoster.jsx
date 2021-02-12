@@ -123,7 +123,7 @@ class ArticlePoster extends Component {
             onChange={this.handleInput}
           />
           {titleError ? (
-            <p style={{ color: "#800000" }}>
+            <p style={{ color: "#ff8c2d" }}>
               No title this short can accurately describe anything worth
               reading.
             </p>
@@ -135,6 +135,7 @@ class ArticlePoster extends Component {
         <br />
         <label>
           Body:
+          <br />
           <textarea
             id="body"
             value={body}
@@ -143,7 +144,7 @@ class ArticlePoster extends Component {
             columns="30"
           />
           {bodyError ? (
-            <p style={{ color: "#800000" }}>
+            <p style={{ color: "#ffd7aa" }}>
               Short and sweet is good and all, but this is giving me a
               toothache. (min 30 characters)
             </p>
@@ -153,7 +154,7 @@ class ArticlePoster extends Component {
         </label>
         <br />
         <br />
-        <label>Choose a relevant topic: </label>
+        <label>Choose a topic: </label>
         <select id="topic" value={topic} onChange={this.handleInput}>
           {topics.map((topic) => {
             return (

@@ -52,12 +52,13 @@ class TopicPoster extends Component {
             successMessage: data.msg,
             isLoading: false,
           });
+          this.props.addTopic(data.topic);
         })
         .catch((err) => {
           console.dir(err);
         });
-      this.props.addTopic(this.state.postedTopic);
-      this.setState(defaultState);
+
+      // this.setState(defaultState);
     }
   };
 

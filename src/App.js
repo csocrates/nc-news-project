@@ -18,9 +18,7 @@ class App extends Component {
   componentDidMount() {
     this.fetchTopics();
   }
-  componentDidUpdate() {
-    this.fetchTopics();
-  }
+
   render() {
     const { topics, username } = this.state;
     return (
@@ -46,8 +44,9 @@ class App extends Component {
     });
   }
   addTopic = (postedTopic) => {
+    console.log("posted topic", postedTopic);
     this.setState((currentState) => {
-      return { topic: [...currentState.topics, postedTopic] };
+      return { topics: [...currentState.topics, postedTopic] };
     });
   };
 }

@@ -9,8 +9,8 @@
     "title  dropdown-menu"
     "title topics-sidebar"
     "articles-list topics-sidebar"
-    "articles-list ads"
-    " articles-list ads2";
+    "articles-list topics-sidebar"
+    " articles-list topics-sidebar";
 }
 .title {
   border: 3px solid blue;

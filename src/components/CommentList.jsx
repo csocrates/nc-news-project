@@ -8,8 +8,17 @@ class CommentList extends Component {
   state = { comments: [], isLoading: true };
 
   componentDidMount() {
-    this.fetchComments(this.props.article_id);
+    const { article_id } = this.props;
+    this.fetchComments(article_id);
   }
+
+  componentDidUpdate(prevProps) {
+    const { article_id } = this.props;
+    if (article_id !== prevProps.article_id) {
+      this.fetchComments(article_id);
+    }
+  }
+
   render() {
     const { comment_count, article_id, user } = this.props;
     const { comments, isLoading } = this.state;
@@ -27,6 +36,7 @@ class CommentList extends Component {
             return (
               <CommentCard
                 key={comment.comment_id}
+                comment_id={comment.comment_id}
                 {...comment}
                 user={user}
                 removeDeletedComment={this.removeDeletedComment}

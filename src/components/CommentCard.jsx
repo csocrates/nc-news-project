@@ -3,7 +3,6 @@ import CommentDeleter from "./CommentDeleter";
 
 const CommentCard = ({
   username,
-  votes,
   created_at,
   body,
   comment_id,

@@ -4,6 +4,7 @@ import ErrorDisplayer from "./ErrorDisplayer";
 import Loader from "./Loader";
 import CommentList from "./CommentList";
 import VoteUpdater from "./VoteUpdater";
+import ArticleDeleter from "./ArticleDeleter";
 
 class SingleArticle extends Component {
   state = { article: {}, isLoading: true, errorMessage: "" };
@@ -11,6 +12,15 @@ class SingleArticle extends Component {
   componentDidMount() {
     this.fetchArticleById(this.props.article_id);
   }
+
+  componentDidUpdate(prevProps) {
+    const { article_id } = this.props;
+    console.log(prevProps.article_id, article_id);
+    if (article_id !== prevProps.article_id) {
+      this.fetchArticleById(article_id);
+    }
+  }
+
   render() {
     const { username } = this.props;
     const {
@@ -18,6 +28,7 @@ class SingleArticle extends Component {
       isLoading,
       errorMessage,
     } = this.state;
+
     if (isLoading) return <Loader />;
     if (errorMessage) return <ErrorDisplayer err={errorMessage} />;
     return (
@@ -26,7 +37,11 @@ class SingleArticle extends Component {
         <p>by {author}</p>
         <p>{body}</p>
         <VoteUpdater id={article_id} votes={votes} type="articles" />
-
+        <ArticleDeleter
+          article_id={article_id}
+          user={username}
+          author={author}
+        />
         <CommentList
           article_id={article_id}
           comment_count={comment_count}

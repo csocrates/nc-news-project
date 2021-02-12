@@ -13,9 +13,9 @@ const defaultState = {
   successMessage: "",
   isLoading: true,
   postedArticle: {},
-  titleError: "",
-  bodyError: "",
-  userError: "",
+  titleError: false,
+  bodyError: false,
+  userError: false,
 };
 
 class ArticlePoster extends Component {
@@ -36,31 +36,24 @@ class ArticlePoster extends Component {
   validate = () => {
     const { username } = this.props;
     const { title, body } = this.state;
-    let titleError = "";
-    let bodyError = "";
-    let userError = "";
+
     if (title.length < 3) {
-      titleError =
-        "No title this short can accurately describe anything worth reading.";
-    }
-    if (titleError) {
-      this.setState({ titleError });
+      this.setState({ titleError: true });
       return false;
+    } else {
+      this.setState({ titleError: false });
     }
     if (body.length < 30) {
-      bodyError =
-        "Short and sweet is good and all, but this is giving me a toothache. (min 30 characters)";
-    }
-    if (bodyError) {
-      this.setState({ bodyError });
+      this.setState({ bodyError: true });
       return false;
+    } else {
+      this.setState({ bodyError: false });
     }
     if (username === "") {
-      userError = "Nice try. You must be logged in to post an article.";
-    }
-    if (userError) {
-      this.setState({ userError });
+      this.setState({ userError: true });
       return false;
+    } else {
+      this.setState({ userError: false });
     }
     return true;
   };
@@ -129,7 +122,14 @@ class ArticlePoster extends Component {
             value={title}
             onChange={this.handleInput}
           />
-          <p style={{ color: "#800000" }}>{titleError}</p>
+          {titleError ? (
+            <p style={{ color: "#800000" }}>
+              No title this short can accurately describe anything worth
+              reading.
+            </p>
+          ) : (
+            ""
+          )}
         </label>
         <br />
         <br />
@@ -142,7 +142,14 @@ class ArticlePoster extends Component {
             rows="10"
             columns="30"
           />
-          <p style={{ color: "#800000" }}>{bodyError}</p>
+          {bodyError ? (
+            <p style={{ color: "#800000" }}>
+              Short and sweet is good and all, but this is giving me a
+              toothache. (min 30 characters)
+            </p>
+          ) : (
+            ""
+          )}
         </label>
         <br />
         <br />
@@ -161,7 +168,13 @@ class ArticlePoster extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           Post!
         </button>
-        <p style={{ color: "#800000" }}>{userError}</p>
+        {userError ? (
+          <p style={{ color: "#800000" }}>
+            "Nice try. You must be logged in to post an article.";
+          </p>
+        ) : (
+          ""
+        )}
       </form>
     );
   }

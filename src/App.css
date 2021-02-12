@@ -17,11 +17,15 @@
   grid-area: title;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-areas: "pic main-title";
+  grid-template-rows: 1fr 5fr;
+  grid-template-areas:
+    "pic login"
+    "pic main-title";
 }
 
-.p {
-  line-height: 10px;
+.login {
+  font-size: 10px;
+  grid-area: login;
 }
 
 .logo {
@@ -36,6 +40,7 @@
   grid-area: main-title;
   display: flex;
   justify-content: left;
+  line-height: 5px;
 }
 
 .dropdown-menu {

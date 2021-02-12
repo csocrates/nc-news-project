@@ -49,6 +49,10 @@ export const postArticle = (newArticle) => {
   return request.post("/articles", newArticle);
 };
 
+export const deleteArticle = (article_id) => {
+  console.log("made it here", article_id);
+};
+
 export const postTopic = (newTopic) => {
   return request.post("/topics", newTopic);
 };

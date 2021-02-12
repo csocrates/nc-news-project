@@ -1,6 +1,15 @@
 import React from "react";
+import CommentDeleter from "./CommentDeleter";
 
-const CommentCard = ({ username, votes, created_at, body }) => {
+const CommentCard = ({
+  username,
+  votes,
+  created_at,
+  body,
+  comment_id,
+  user,
+  removeDeletedComment,
+}) => {
   const formattedTime = created_at.split("T")[0];
   return (
     <section className="comment-card">
@@ -8,6 +17,12 @@ const CommentCard = ({ username, votes, created_at, body }) => {
       <p>
         posted by {username} on {formattedTime}
       </p>
+      <CommentDeleter
+        author={username}
+        comment_id={comment_id}
+        user={user}
+        removeDeletedComment={removeDeletedComment}
+      />
     </section>
   );
 };

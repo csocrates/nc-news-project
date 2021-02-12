@@ -4,10 +4,10 @@ import SuccessDisplayer from "./SuccessDisplayer";
 import { Component } from "react";
 
 class ArticleDeleter extends Component {
-  state = { successMessage: "" };
+  state = { success: false };
   render() {
     const { successMessage } = this.state;
-    const { article_id, user, author } = this.props;
+    const { article_id, user, author, removeArticle } = this.props;
     if (successMessage)
       return <SuccessDisplayer msg={successMessage} type={"deleteArticle"} />;
     if (user === author) {
@@ -19,9 +19,10 @@ class ArticleDeleter extends Component {
                 `${user}, are you sure you wish to delete this article?`
               )
             )
-              api.deleteArticle(article_id).then((res) => {
+              api.deleteArticle(article_id).then(() => {
+                removeArticle();
                 this.setState({
-                  successMessage: "Article successfully deleted",
+                  successMessage: true,
                 });
               });
           }}

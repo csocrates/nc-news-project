@@ -11,20 +11,27 @@ class CommentList extends Component {
     this.fetchComments(this.props.article_id);
   }
   render() {
-    const { username, comment_count, article_id } = this.props;
+    const { comment_count, article_id, user } = this.props;
     const { comments, isLoading } = this.state;
     if (isLoading) return <Loader />;
     return (
       <>
         <CommentPoster
           article_id={article_id}
-          username={username}
+          user={user}
           addNewComment={this.addNewComment}
         />
         <section className="comments-list">
           <h5>Comments({comment_count})</h5>
           {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} {...comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                {...comment}
+                user={user}
+                removeDeletedComment={this.removeDeletedComment}
+              />
+            );
           })}
         </section>
       </>
@@ -43,6 +50,15 @@ class CommentList extends Component {
   addNewComment = (newComment) => {
     this.setState((currentState) => {
       return { comments: [newComment, ...currentState.comments] };
+    });
+  };
+  removeDeletedComment = (comment_id) => {
+    this.setState((currentState) => {
+      return {
+        comments: currentState.comments.filter(
+          (comment) => comment.comment_id !== comment_id
+        ),
+      };
     });
   };
 }

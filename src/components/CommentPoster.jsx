@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import * as api from "../api";
 
 const defaultState = {
-  username: "",
   body: "",
-  commentError: "",
+  commentError: false,
   successMessage: "",
   postedComment: {},
 };
@@ -18,28 +17,27 @@ class CommentPoster extends Component {
 
   validate = () => {
     const { body } = this.state;
-    let commentError = "";
+
     if (body.length < 3) {
-      commentError = "Your comment is pathetically short. Try again.";
-    }
-    if (commentError) {
-      this.setState({ commentError });
+      this.setState({ commentError: true });
       return false;
+    } else {
+      this.setState({ commentError: false });
+      return true;
     }
-    return true;
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { article_id, username } = this.props;
+    const { article_id, user, addNewComment } = this.props;
     const { body } = this.state;
-    const newComment = { username, body };
+    const newComment = { username: user, body };
     const isValid = this.validate();
     if (isValid) {
       api
         .postComment(article_id, newComment)
         .then(({ data }) => {
-          this.props.addNewComment(data.comment);
+          addNewComment(data.comment);
           this.setState({ successMessage: data.msg });
         })
         .catch((err) => {
@@ -60,7 +58,11 @@ class CommentPoster extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           Post!
         </button>
-        <p style={{ color: "#800000" }}>{commentError}</p>
+        {commentError ? (
+          <p style={{ color: "#800000" }}>
+            Your comment is pathetically short. Try again.
+          </p>
+        ) : null}
       </form>
     );
   }

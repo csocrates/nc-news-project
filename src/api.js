@@ -60,3 +60,7 @@ export const postTopic = (newTopic) => {
 export const postComment = (article_id, newComment) => {
   return request.post(`/articles/${article_id}/comments`, newComment);
 };
+
+export const deleteComment = ({ comment_id }) => {
+  return request.delete(`/comments/${comment_id}`);
+};

@@ -5,9 +5,10 @@ import Loader from "./Loader";
 import CommentList from "./CommentList";
 import VoteUpdater from "./VoteUpdater";
 import ArticleDeleter from "./ArticleDeleter";
+import { Link } from "@reach/router";
 
 class SingleArticle extends Component {
-  state = { article: {}, isLoading: true, errorMessage: "" };
+  state = { article: {}, isLoading: true, errorMessage: "", deleted: false };
 
   componentDidMount() {
     this.fetchArticleById(this.props.article_id);
@@ -23,6 +24,7 @@ class SingleArticle extends Component {
   render() {
     const { username } = this.props;
     const {
+      deleted,
       article: { title, author, body, votes, comment_count, article_id },
       isLoading,
       errorMessage,
@@ -30,6 +32,13 @@ class SingleArticle extends Component {
 
     if (isLoading) return <Loader />;
     if (errorMessage) return <ErrorDisplayer err={errorMessage} />;
+    if (deleted)
+      return (
+        <>
+          {" "}
+          <p>Bye bye, article.</p>Return to the <Link to="/">Front Page</Link>{" "}
+        </>
+      );
     return (
       <section className="single-article">
         <h3>{title}</h3>
@@ -40,11 +49,12 @@ class SingleArticle extends Component {
           article_id={article_id}
           user={username}
           author={author}
+          removeArticle={this.removeArticle}
         />
         <CommentList
           article_id={article_id}
           comment_count={comment_count}
-          username={username}
+          user={username}
         />
       </section>
     );
@@ -62,6 +72,9 @@ class SingleArticle extends Component {
         });
       });
   }
+  removeArticle = () => {
+    this.setState({ deleted: true });
+  };
 }
 
 export default SingleArticle;

@@ -9,6 +9,7 @@ import SingleArticle from "./components/SingleArticle";
 import UserPage from "./components/UserPage";
 import ArticlePoster from "./components/ArticlePoster";
 import TopicPoster from "./components/TopicPoster";
+import Login from "./components/Login";
 import * as api from "./api";
 
 import React, { Component } from "react";
@@ -23,7 +24,8 @@ class App extends Component {
     const { topics, username } = this.state;
     return (
       <div className="App">
-        <Title username={username} />
+        <Title />
+        <Login username={username} logOut={this.logOut} logIn={this.logIn} />
         <Nav />
         <Sidebar topics={topics} />
         <Router className="articles-list">
@@ -47,6 +49,12 @@ class App extends Component {
     this.setState((currentState) => {
       return { topics: [...currentState.topics, postedTopic] };
     });
+  };
+  logOut = () => {
+    this.setState({ username: "" });
+  };
+  logIn = () => {
+    this.setState({ username: "jessjelly" });
   };
 }
 

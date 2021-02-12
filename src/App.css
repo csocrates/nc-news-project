@@ -16,10 +16,11 @@
     " articles-list topics-sidebar";
 }
 .title {
+  border: solid 2px #ffedd9;
   grid-area: title;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 2fr 5fr;
   grid-template-areas:
     "pic login"
     "pic main-title";
@@ -35,8 +36,21 @@ h5 {
 }
 
 .login {
-  font-size: 10px;
   grid-area: login;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "login-text"
+    "login-button";
+}
+
+.login-text {
+  grid-area: login-text;
+}
+
+.login-button {
+  grid-area: login-button;
+  display: inline block;
 }
 
 .logo {
@@ -83,7 +97,7 @@ h5 {
 
 .dropbtn {
   text-align: center;
-  background-color: rgba(22, 12, 7, 0.87);
+  background-color: rgba(22, 12, 7, 0.342);
   color: #ffedd9;
   padding: 16px;
   font-size: 16px;

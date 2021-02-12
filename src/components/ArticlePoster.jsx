@@ -154,7 +154,7 @@ class ArticlePoster extends Component {
         </label>
         <br />
         <br />
-        <label>Choose a topic: </label>
+        <label>Choose your topic: </label>
         <select id="topic" value={topic} onChange={this.handleInput}>
           {topics.map((topic) => {
             return (

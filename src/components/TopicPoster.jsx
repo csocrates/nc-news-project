@@ -29,7 +29,7 @@ class TopicPoster extends Component {
     let topicError = "";
 
     if (slug.length < 3) {
-      topicError = "That just ain't gonna cut it cabron... (min 3 characters)";
+      topicError = "That just ain't gonna cut it... (min 3 characters)";
     }
     if (topicError) {
       this.setState({ topicError });
@@ -91,7 +91,7 @@ class TopicPoster extends Component {
             value={slug}
             onChange={this.handleInput}
           />
-          <p style={{ color: "#800000" }}>{topicError}</p>
+          <p style={{ color: "#ffd7aa" }}>{topicError}</p>
         </label>
         <br />
         <br />

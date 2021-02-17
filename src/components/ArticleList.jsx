@@ -7,14 +7,23 @@ import ErrorDisplayer from "./ErrorDisplayer";
 import { Link } from "@reach/router";
 
 class ArticleList extends Component {
-  state = { topic: "", articles: [], isLoading: true, errorMessage: "" };
+  state = {
+    topic: "",
+    articles: [],
+    sort_by: "",
+    isLoading: true,
+    errorMessage: "",
+  };
 
   componentDidMount() {
-    this.fetchArticles(this.props.topic);
+    this.fetchArticles();
   }
 
   componentDidUpdate(prevProps) {
     const { topic } = this.props;
+    const { sort_by } = this.state;
+    console.log(sort_by);
+
     //stops infinite loop (new props triggers rerender triggers cdu)
     if (topic !== prevProps.topic) {
       this.setState({ isLoading: true, errorMessage: "" });
@@ -41,6 +50,25 @@ class ArticleList extends Component {
     return (
       <section className="article-list">
         <ArticlesHeader topic={topic} />
+        <div className="dropdown">
+          <button className="sortbtn">Sort</button>
+          <div className="dropdown-content">
+            <button
+              onClick={() => {
+                this.sortArticles("votes");
+              }}
+            >
+              Highest Voted
+            </button>
+            <button
+              onClick={() => {
+                this.sortArticles("comment_count");
+              }}
+            >
+              Most Commented
+            </button>
+          </div>
+        </div>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} {...article} />;
         })}
@@ -66,6 +94,14 @@ class ArticleList extends Component {
           this.setState({ isLoading: false, errorMessage: msg });
         }
       );
+  }
+  sortArticles(sort_by) {
+    api.sortArticles(sort_by).then((articles) => {
+      this.setState({ isLoading: false, articles });
+    });
+  }
+  handleClick(sort_by) {
+    this.setState({ sort_by });
   }
 }
 

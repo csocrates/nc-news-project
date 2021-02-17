@@ -20,7 +20,7 @@ const ArticleCard = ({
         <h5 className="article-title">{title}</h5>
       </Link>
       <p style={{ fontSize: "10px" }}>u/ in {topic}</p>
-      <h6>{preview}...</h6>
+      <p className="preview">{preview}...</p>
       <h6>
         Posted by
         <Link to={`/users/${author}`}> {author}</Link> on {formattedTime}

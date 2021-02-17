@@ -24,13 +24,18 @@ class App extends Component {
     const { topics, username } = this.state;
     return (
       <div className="App">
-        <Title />
-        <Login username={username} logOut={this.logOut} logIn={this.logIn} />
-        <Nav />
+        <Title username={username} />
+        <Nav username={username} />
         <Sidebar topics={topics} />
         <Router className="articles-list">
           <ArticleList path="/" />
           <ArticleList path="/:topic/articles" />
+          <Login
+            path="/login"
+            username={username}
+            logOut={this.logOut}
+            logIn={this.logIn}
+          />
           <SingleArticle path="/articles/:article_id" username={username} />
           <UserPage path="/users/:username" />
           <ArticlePoster path="/articles/post" username={username} />

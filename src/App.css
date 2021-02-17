@@ -22,8 +22,12 @@
   grid-template-columns: 0.5fr 1fr;
   grid-template-rows: 2fr 5fr;
   grid-template-areas:
-    "pic login"
+    "pic loggedin-msg"
     "pic main-title";
+}
+
+.loggedin-msg {
+  font-size: 5px;
 }
 
 a {
@@ -33,9 +37,18 @@ a {
 h5 {
   color: #ffedd9;
   font-size: 20px;
+  margin: 10px;
 }
 
-.login {
+.preview {
+  margin: 5px;
+  margin: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 12px;
+}
+
+/* .login {
   grid-area: login;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -51,7 +64,7 @@ h5 {
 .login-button {
   grid-area: login-button;
   display: inline block;
-}
+} */
 
 .logo {
   border: solid 3px black;
@@ -79,7 +92,10 @@ h5 {
   text-decoration: none;
   list-style-type: none;
   text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
   line-height: 25px;
+  font-size: 13px;
 }
 .articles-list {
   overflow: scroll;
@@ -95,9 +111,18 @@ h5 {
 .article-title {
 }
 
+.sortbtn {
+  text-align: center;
+  background-color: rgba(22, 12, 7, 0);
+  color: #ffedd9;
+  padding: 6px;
+  font-size: 16px;
+  width: 140%;
+}
+
 .dropbtn {
   text-align: center;
-  background-color: rgba(22, 12, 7, 0.342);
+  background-color: rgba(22, 12, 7, 0);
   color: #ffedd9;
   padding: 16px;
   font-size: 16px;

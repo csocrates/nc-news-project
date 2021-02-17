@@ -10,7 +10,9 @@ class Nav extends Component {
           <Link to="/">Home</Link>
           <Link to="/articles/post">Post an Article</Link>
           <Link to="/topics/post">Post a Topic</Link>
-          <Link to="">Something else</Link>
+          <Link to="/login">
+            {this.props.username === "" ? "Log In" : "Log Out"}
+          </Link>
         </div>
       </div>
     );

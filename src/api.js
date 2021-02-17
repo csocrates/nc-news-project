@@ -17,6 +17,12 @@ export const getArticles = (topic) => {
   });
 };
 
+export const sortArticles = (sort_by) => {
+  return request.get("/articles", { params: { sort_by } }).then(({ data }) => {
+    return data.articles;
+  });
+};
+
 export const getArticleById = (article_id) => {
   return request.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;

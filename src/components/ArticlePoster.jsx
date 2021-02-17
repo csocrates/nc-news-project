@@ -123,7 +123,7 @@ class ArticlePoster extends Component {
             onChange={this.handleInput}
           />
           {titleError ? (
-            <p style={{ color: "#ff8c2d" }}>
+            <p style={{ color: "#ffd7aa" }}>
               No title this short can accurately describe anything worth
               reading.
             </p>
@@ -170,7 +170,7 @@ class ArticlePoster extends Component {
           Post!
         </button>
         {userError ? (
-          <p style={{ color: "#800000" }}>
+          <p style={{ color: "#ffd7aa" }}>
             "Nice try. You must be logged in to post an article.";
           </p>
         ) : (

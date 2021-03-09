@@ -58,8 +58,8 @@ class App extends Component {
   logOut = () => {
     this.setState({ username: "" });
   };
-  logIn = () => {
-    this.setState({ username: "jessjelly" });
+  logIn = (username) => {
+    this.setState({ username });
   };
 }
 

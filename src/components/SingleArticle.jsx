@@ -43,7 +43,7 @@ class SingleArticle extends Component {
       <section className="single-article">
         <h3>{title}</h3>
         <p>by {author}</p>
-        <p>{body}</p>
+        <p className="article-body">{body}</p>
         <VoteUpdater id={article_id} votes={votes} type="articles" />
         <ArticleDeleter
           article_id={article_id}

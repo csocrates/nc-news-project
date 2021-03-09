@@ -20,6 +20,7 @@ class ArticleList extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log("hello");
     const { topic } = this.props;
     const { sort_by } = this.state;
     console.log(sort_by);

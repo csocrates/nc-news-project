@@ -58,7 +58,11 @@ class CommentPoster extends Component {
           <textarea id="body" value={body} onChange={this.handleInput} />
         </label>
         <br />
-        <button type="submit" onClick={this.handleSubmit}>
+        <button
+          type="submit"
+          onClick={this.handleSubmit}
+          disabled={!this.props.user}
+        >
           Post!
         </button>
         {commentError ? (

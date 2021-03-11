@@ -32,7 +32,8 @@ class CommentList extends Component {
         />
         <section className="comments-list">
           <h5>Comments({comment_count})</h5>
-          {comment_count === 0 ? <p>Be the first to write a comment!</p> : ""}
+          {console.log(comment_count)}
+          {comment_count == 0 ? <p>Be the first to write a comment!</p> : ""}
           {comments.map((comment) => {
             return (
               <CommentCard

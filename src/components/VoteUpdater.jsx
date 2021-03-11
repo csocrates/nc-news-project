@@ -24,6 +24,7 @@ class VoteUpdater extends Component {
     return (
       <section className="voter">
         <button
+          className="vote-button"
           disabled={voteChange === 1}
           onClick={() => {
             this.handleClick(1);
@@ -33,6 +34,7 @@ class VoteUpdater extends Component {
         </button>
         <p>Votes: {votes + voteChange}</p>
         <button
+          className="vote-button"
           disabled={voteChange === -1}
           onClick={() => {
             this.handleClick(-1);

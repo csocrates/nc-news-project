@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 import * as api from "../api";
 
 class Login extends Component {
@@ -11,8 +12,16 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { newUser } = this.state;
-    this.props.logIn(newUser);
+    const { newUser, userError } = this.state;
+    api
+      .getUser(newUser)
+      .then(() => {
+        this.setState({ userError: false });
+        this.props.logIn(newUser);
+      })
+      .catch((err) => {
+        this.setState({ userError: true });
+      });
   };
 
   render() {
@@ -23,33 +32,48 @@ class Login extends Component {
         <>
           <br />
           <br />
-          <p> {`You are logged in as ${username}`}</p>
+          <p>
+            {" "}
+            You are logged in as{" "}
+            <Link to={`users/${username}`}>{username}</Link>
+          </p>
           <button className="login-button" onClick={logOut}>
             Log Out
           </button>
+          <br />
+          <br />
+          <Link to="/">Back to Homepage</Link>
         </>
       );
     }
     if (!username) {
       return (
         <>
-          <label>
-            Username:
-            <input
-              type="text"
-              onChange={this.handleInput}
-              value={newUser}
-              id="newUser"
-            />
-          </label>
-          <button
-            className="login-button"
-            type="submit"
-            onClick={this.handleSubmit}
-          >
-            Log In
-          </button>
-          {userError ? <p>Not A Valid User</p> : ""}
+          <br />
+          <br />
+          <form>
+            <label>
+              Username:
+              <input
+                type="text"
+                onChange={this.handleInput}
+                value={newUser}
+                id="newUser"
+              />
+            </label>
+            <br />
+            <br />
+            <button
+              className="login-button"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
+              Log In
+            </button>
+            {userError ? <p>Not A Valid User</p> : <p></p>}
+            <br />
+          </form>
+          <Link to="/">Back to Homepage</Link>
         </>
       );
     }
